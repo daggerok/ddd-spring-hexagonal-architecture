@@ -1,0 +1,80 @@
+notifications:
+  email: false
+git:
+  quiet: true
+  depth: false
+jdk: openjdk11
+node_js: lts/*
+language: python
+python: 3.8
+os: linux
+arch: amd64
+addons:
+  apt:
+    update: false
+    packages:
+      - jq
+      - bash
+      - curl
+      - tree
+      - docker-ce
+      - libxml2-utils
+      - libappindicator1
+      - fonts-liberation
+      - google-chrome-stable
+services:
+  - docker
+  - xvfb
+install: true
+before_install:
+  - |
+    if [ ! -f ${HOME}/.local/daggerok/bash-functions/master/main.bash ] ; then
+      mkdir -p ${HOME}/.local/daggerok/bash-functions/master ;
+      curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash > ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
+    fi
+    source ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
+  - stop_any 80 5432 8080
+  #
+  - python -m pip install --upgrade pip setuptools pyopenssl
+  - python -m pip install --upgrade docker-compose httpie
+jobs:
+  include:
+    - stage: test
+      name: test
+      jdk: openjdk11
+      before_script:
+        - cd $TRAVIS_BUILD_DIR && ./mvnw
+        - bash $TRAVIS_BUILD_DIR/target/*.jar &
+        - wait_for 8080
+      script:
+        - http :8080
+        #
+        - http post :8080/elections name=Test
+        - electionId=`http get :8080/elections | jq -r ".[].id"`
+        #
+        - http post :8080/elections/$electionId/candidates name="Asshole 1"
+        - http post :8080/elections/$electionId/candidates name="Asshole 2"
+        - firstCandidate=`http get :8080/candidates | jq -r ".[0].id"`
+        - secondCandidate=`http get :8080/candidates | jq -r ".[1].id"`
+        #
+        - http post :8080/elections/$electionId/voters name="Asshole 1"
+        - http post :8080/elections/$electionId/voters name="Asshole 2"
+        - http post :8080/elections/$electionId/voters name="Poor young newbie..."
+        - firstVoter=`http get :8080/voters | jq -r ".[0].id"`
+        - secondVoter=`http get :8080/voters | jq -r ".[1].id"`
+        - thirdVoter=`http get :8080/voters | jq -r ".[2].id"`
+        #
+        - http put :8080/elections/$electionId/candidates/$firstCandidate/voters/$firstVoter
+        - http put :8080/elections/$electionId/candidates/$secondCandidate/voters/$secondVoter
+        - http put :8080/elections/$electionId/candidates/$secondCandidate/voters/$thirdVoter
+      after_script:
+        - stop_any 80
+cache:
+  npm: true
+  pip: true
+  packages: true
+  directories:
+    - ~/.m2
+    - ~/.docker
+    - ~/.local/daggerok
+    - .vuepress/node_modules

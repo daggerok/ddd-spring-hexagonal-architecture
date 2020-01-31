@@ -1,0 +1,7 @@
+spring:
+  datasource:
+    url: jdbc:h2:file:./target/db;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+    #url: jdbc:h2:mem:db;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE
+  h2:
+    console:
+      enabled: true

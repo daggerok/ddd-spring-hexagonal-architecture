@@ -1,0 +1,148 @@
+POST http://localhost:8080/elections
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Ukraine President election 2020"
+}
+
+> {%
+  client.test("should create election", function() {
+    var electionId = response.body["id"];
+    client.log("electionId: " + electionId);
+    client.global.set("electionId", electionId);
+  });
+%}
+
+###
+GET http://localhost:8080/elections
+Accept: application/json
+
+###################################
+
+###
+POST http://localhost:8080/elections/{{electionId}}/candidates
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Old Asshole"
+}
+
+> {%
+  client.test("should register 1st candidate for the election", function() {
+    var firstCandidateId = response.body["id"];
+    client.log("firstCandidateId: " + firstCandidateId);
+    client.global.set("firstCandidateId", firstCandidateId);
+  });
+%}
+
+###
+POST http://localhost:8080/elections/{{electionId}}/candidates
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "New Asshole"
+}
+
+> {%
+  client.test("should register 2nd candidate for the election", function() {
+    var secondCandidateId = response.body["id"];
+    client.log("secondCandidateId: " + secondCandidateId);
+    client.global.set("secondCandidateId", secondCandidateId);
+  });
+%}
+
+###
+GET http://localhost:8080/candidates
+Accept: application/json
+
+####################################
+####################################
+
+###
+POST http://localhost:8080/elections/{{electionId}}/voters
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Old Asshole"
+}
+
+> {%
+  client.test("should register firstCandidate as a voter for the election", function() {
+    var firstVoter = response.body["id"];
+    client.log("firstVoter: " + firstVoter);
+    client.global.set("firstVoter", firstVoter);
+  });
+%}
+
+###
+POST http://localhost:8080/elections/{{electionId}}/voters
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "New Asshole"
+}
+
+> {%
+  client.test("should register secondCandidate as a voter for the election", function() {
+    var secondVoter = response.body["id"];
+    client.log("secondVoter: " + secondVoter);
+    client.global.set("secondVoter", secondVoter);
+  });
+%}
+
+###
+POST http://localhost:8080/elections/{{electionId}}/voters
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Poor young believer"
+}
+
+> {%
+  client.test("should register 3rd voter for the election", function() {
+    var thirdVoter = response.body["id"];
+    client.log("thirdVoter: " + thirdVoter);
+    client.global.set("thirdVoter", thirdVoter);
+  });
+%}
+
+###
+GET http://localhost:8080/voters
+Accept: application/json
+
+################################
+################################
+################################
+
+###
+PUT http://localhost:8080/elections/{{electionId}}/candidates/{{firstCandidateId}}/voters/{{firstVoter}}
+Accept: application/json
+
+###
+PUT http://localhost:8080/elections/{{electionId}}/candidates/{{secondCandidateId}}/voters/{{secondVoter}}
+Accept: application/json
+
+###
+PUT http://localhost:8080/elections/{{electionId}}/candidates/{{secondCandidateId}}/voters/{{thirdVoter}}
+Accept: application/json
+
+#########################################################################################################
+#########################################################################################################
+#########################################################################################################
+#########################################################################################################
+
+###
+GET http://localhost:8080/elections/{{electionId}}
+Accept: application/json
+
+###
+GET http://localhost:8080
+Accept: application/json
+
+###
