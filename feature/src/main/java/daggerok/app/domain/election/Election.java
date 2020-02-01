@@ -27,8 +27,8 @@ public class Election {
     @JsonIgnore
     private final Collection<CandidateRef> candidates;
 
-    public Election(UUID id, String name) {
-        this(id, name, new CopyOnWriteArrayList<>());
+    public Election(String name) {
+        this(null, name, new CopyOnWriteArrayList<>());
     }
 
     public Election registerCandidates(Candidate... candidates) {

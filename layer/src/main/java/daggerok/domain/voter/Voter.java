@@ -16,4 +16,8 @@ public class Voter {
     @Id
     private final UUID id;
     private final String name;
+
+    public Voter(String name) {
+        this(null, name);
+    }
 }

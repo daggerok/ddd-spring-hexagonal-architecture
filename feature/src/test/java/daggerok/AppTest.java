@@ -12,7 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.support.TransactionTemplate;
 
 import java.util.Arrays;
-import java.util.UUID;
 
 @Log4j2
 @SpringBootTest(classes = App.class)
@@ -26,9 +25,9 @@ class AppTest {
     @Test
     void should_save_all_voters() {
         Iterable<Voter> voters = voterRepository.saveAll(Arrays.asList(
-                new Voter(UUID.randomUUID(), "Voter 1"),
-                new Voter(UUID.randomUUID(), "Voter 2"),
-                new Voter(UUID.randomUUID(), "Voter 3")
+                new Voter("Voter 1"),
+                new Voter("Voter 2"),
+                new Voter("Voter 3")
         ));
         log.info(voters);
     }
@@ -36,22 +35,22 @@ class AppTest {
     @Test
     void should_save_all_candidates() {
         Iterable<Candidate> candidates = candidateRepository.saveAll(Arrays.asList(
-                new Candidate(UUID.randomUUID(), "Candidate 1"),
-                new Candidate(UUID.randomUUID(), "Candidate 2")
+                new Candidate("Candidate 1"),
+                new Candidate("Candidate 2")
         ));
         log.info(candidates);
     }
 
     @Test
     void should_save_candidate_with_voters() {
-        Candidate candidate = new Candidate(UUID.randomUUID(), "Candidate 1");
+        Candidate candidate = new Candidate("Candidate 1");
         candidateRepository.save(candidate);
         log.info("candidate: {}", candidate);
 
         Iterable<Voter> voters = voterRepository.saveAll(Arrays.asList(
-                new Voter(UUID.randomUUID(), "Voter 1"),
-                new Voter(UUID.randomUUID(), "Voter 2"),
-                new Voter(UUID.randomUUID(), "Voter 3")
+                new Voter("Voter 1"),
+                new Voter("Voter 2"),
+                new Voter("Voter 3")
         ));
         log.info("voters: {}", voters);
 

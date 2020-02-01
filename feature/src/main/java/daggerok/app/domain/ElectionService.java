@@ -10,7 +10,9 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Objects;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 /**
@@ -45,14 +47,14 @@ public class ElectionService {
 
     public Election beginElection(String name) {
         Objects.requireNonNull(name);
-        Election election = new Election(null, name);
+        Election election = new Election(name);
         return electionRepository.save(election);
     }
 
     public Candidate registerCandidate(UUID electionId, String name) {
         Objects.requireNonNull(name);
         Election election = getElection(electionId);
-        Candidate candidate = candidateRepository.save(new Candidate(null, name));
+        Candidate candidate = candidateRepository.save(new Candidate(name));
         Election updated = electionRepository.save(election.registerCandidates(candidate));
         log.info("registered candidate {} for election {}", candidate, updated);
         return candidate;

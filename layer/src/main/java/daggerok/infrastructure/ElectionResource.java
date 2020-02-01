@@ -4,15 +4,18 @@ import daggerok.application.ElectionService;
 import daggerok.application.dto.CandidateDTO;
 import daggerok.application.dto.ElectionDTO;
 import daggerok.application.dto.VoterDTO;
-import daggerok.domain.election.Election;
 import daggerok.domain.candidate.Candidate;
+import daggerok.domain.election.Election;
 import daggerok.domain.voter.Voter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.net.URI;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import java.util.function.Function;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;

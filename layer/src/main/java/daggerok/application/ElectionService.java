@@ -3,10 +3,10 @@ package daggerok.application;
 import daggerok.application.dto.CandidateDTO;
 import daggerok.application.dto.ElectionDTO;
 import daggerok.application.dto.VoterDTO;
-import daggerok.domain.election.Election;
-import daggerok.domain.election.ElectionRepository;
 import daggerok.domain.candidate.Candidate;
 import daggerok.domain.candidate.CandidateRepository;
+import daggerok.domain.election.Election;
+import daggerok.domain.election.ElectionRepository;
 import daggerok.domain.voter.Voter;
 import daggerok.domain.voter.VoterRepository;
 import lombok.RequiredArgsConstructor;
@@ -49,14 +49,14 @@ public class ElectionService {
 
     public ElectionDTO beginElection(String name) {
         Objects.requireNonNull(name);
-        Election election = new Election(null, name);
+        Election election = new Election(name);
         return ElectionDTO.of(electionRepository.save(election));
     }
 
     public CandidateDTO registerCandidate(UUID electionId, String name) {
         Objects.requireNonNull(name);
         Election election = getElection(electionId);
-        Candidate candidate = candidateRepository.save(new Candidate(null, name));
+        Candidate candidate = candidateRepository.save(new Candidate(name));
         Election updated = electionRepository.save(election.registerCandidates(candidate));
         log.info("registered candidate {} for election {}", candidate, updated);
         return CandidateDTO.of(candidate);

@@ -27,8 +27,8 @@ public class Candidate implements Comparable<Candidate> {
     @JsonIgnore
     private final Collection<VoterRef> voters;
 
-    public Candidate(UUID id, String name) {
-        this(id, name, new CopyOnWriteArrayList<>());
+    public Candidate(String name) {
+        this(null, name, new CopyOnWriteArrayList<>());
     }
 
     public Candidate receiveVotes(Voter... voters) {
