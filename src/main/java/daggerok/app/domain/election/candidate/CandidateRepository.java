@@ -18,14 +18,14 @@ public interface CandidateRepository extends CrudRepository<Candidate, UUID> {
         private final Long totalVotes;
     }
 
-    @Query("    select      c.name           name,                  " +
-            "               count(vr.voter)  total_votes            " +
-            "   from        candidate     c                         " +
-            "   join        voter_ref     vr on c.id = vr.candidate " +
-            "   join        candidate_ref cr on c.id = cr.candidate " +
-            "   join        election      e  on e.id = cr.election  " +
-            "   where       e.id = :electionId                      " +
-            "   group by    c.name                                  " +
-            "   order by    total_votes DESC                        ")
+    @Query("  select   c.name          name,                     " +
+            "          count(vr.voter) total_votes               " +
+            " from     candidate       c                         " +
+            " join     voter_ref       vr on c.id = vr.candidate " +
+            " join     candidate_ref   cr on c.id = cr.candidate " +
+            " join     election        e  on e.id = cr.election  " +
+            " where                          e.id = :electionId  " +
+            " group by c.name                                    " +
+            " order by total_votes desc                          ")
     List<Statistic> findStatistics(@Param("electionId") UUID electionId);
 }
