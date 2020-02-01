@@ -13,6 +13,11 @@ import org.springframework.stereotype.Service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Application layer.
+ * It should not be specific to the your Infrastructure / Framework
+ * as well as to your Domain.
+ */
 @Log4j2
 @Service
 @RequiredArgsConstructor
