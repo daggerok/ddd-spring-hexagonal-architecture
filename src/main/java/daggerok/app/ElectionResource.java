@@ -14,6 +14,10 @@ import java.util.function.Function;
 
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
+/**
+ * Infrastructure (Framework) layer.
+ * In this case we couple to Spring.
+ */
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(produces = APPLICATION_JSON_VALUE)
