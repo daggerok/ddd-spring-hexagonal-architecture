@@ -1,8 +1,6 @@
 # DDD with Spring [![Build Status](https://travis-ci.org/daggerok/ddd-spring-hexagonal-architecture.svg?branch=master)](https://travis-ci.org/daggerok/ddd-spring-hexagonal-architecture)
 Hexagonal DDD application architecture
 
-Status: IN PROGRESS
-
 ```
     +----------+
     | Election |
