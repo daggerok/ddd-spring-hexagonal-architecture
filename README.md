@@ -18,7 +18,7 @@ Status: IN PROGRESS
          |
          V *
         +-------+
-        | voter |
+        | Voter |
         +-------+
 
 ```
