@@ -16,7 +16,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 
 /**
  * Infrastructure (Framework) layer.
- * In this case we couple to Spring.
+ * In this case we relay on Spring ecosystem (Spring MVC).
  */
 @RestController
 @RequiredArgsConstructor
