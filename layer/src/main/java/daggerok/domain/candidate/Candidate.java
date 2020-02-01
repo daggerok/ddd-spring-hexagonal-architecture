@@ -1,6 +1,6 @@
 package daggerok.domain.candidate;
 
-import daggerok.domain.candidate.voter.Voter;
+import daggerok.domain.voter.Voter;
 import lombok.AllArgsConstructor;
 import lombok.Value;
 import lombok.With;

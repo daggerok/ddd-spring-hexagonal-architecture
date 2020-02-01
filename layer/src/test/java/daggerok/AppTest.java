@@ -2,8 +2,8 @@ package daggerok;
 
 import daggerok.domain.candidate.Candidate;
 import daggerok.domain.candidate.CandidateRepository;
-import daggerok.domain.candidate.voter.Voter;
-import daggerok.domain.candidate.voter.VoterRepository;
+import daggerok.domain.voter.Voter;
+import daggerok.domain.voter.VoterRepository;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;

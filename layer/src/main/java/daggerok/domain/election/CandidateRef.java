@@ -1,4 +1,4 @@
-package daggerok.domain;
+package daggerok.domain.election;
 
 import lombok.Value;
 import org.springframework.data.relational.core.mapping.Table;

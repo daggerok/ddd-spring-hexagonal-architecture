@@ -4,9 +4,9 @@ import daggerok.application.ElectionService;
 import daggerok.application.dto.CandidateDTO;
 import daggerok.application.dto.ElectionDTO;
 import daggerok.application.dto.VoterDTO;
-import daggerok.domain.Election;
+import daggerok.domain.election.Election;
 import daggerok.domain.candidate.Candidate;
-import daggerok.domain.candidate.voter.Voter;
+import daggerok.domain.voter.Voter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 

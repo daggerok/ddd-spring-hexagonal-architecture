@@ -1,4 +1,4 @@
-package daggerok.domain;
+package daggerok.domain.election;
 
 import daggerok.domain.candidate.Candidate;
 import lombok.AllArgsConstructor;

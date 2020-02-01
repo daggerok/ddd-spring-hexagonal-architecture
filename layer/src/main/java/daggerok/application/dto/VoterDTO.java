@@ -1,6 +1,6 @@
 package daggerok.application.dto;
 
-import daggerok.domain.candidate.voter.Voter;
+import daggerok.domain.voter.Voter;
 import lombok.Value;
 
 import java.util.UUID;

@@ -1,4 +1,4 @@
-package daggerok.domain;
+package daggerok.domain.election;
 
 import org.springframework.data.repository.CrudRepository;
 
