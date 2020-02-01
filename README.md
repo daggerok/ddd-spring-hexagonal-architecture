@@ -4,23 +4,21 @@ Hexagonal DDD application architecture
 Status: IN PROGRESS
 
 ```
-
     +----------+
     | Election |
     +----------+
-       | 1
-       |
-       V *
-      +-----------+
-      | Candidate |
-      +-----------+
-         | 1
-         |
-         V *
-        +-------+
+       | 1             +------------------------------------------+
+       |               | Infrastructure (framework related) layer |
+       V 0..*          |  +------------------------------------+  |
+      +-----------+    |  |    Application (business logic)    |  |
+      | Candidate |    |  |           service layer            |  |
+      +-----------+    |  |  +------------------------------+  |  |
+         | 1           |  |  |    Domain (Election) layer   |  |  |
+         |             |  |  +------------------------------+  |  |
+         V 0..*        |  +------------------------------------+  |
+        +-------+      +------------------------------------------+
         | Voter |
         +-------+
-
 ```
 
 ## build run and test
