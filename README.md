@@ -23,13 +23,14 @@ Hexagonal DDD application architecture
 
 1. build
    ```bash
-   ./mvnw spring-boot:run
+   ./mvnw spring-boot:run -f feature
+   # ./mvnw spring-boot:run -f layer
    ```
 1. And use [api.http file](api.http) from IntelliJ IDEA.
 
 ## resources
 
-* [H2 with PostgreSQL mode and random UUID generation by using `RANDOM_UUID()` function](src/main/resources/db/migration/V1__schema.sql#L2)
+* [H2 with PostgreSQL mode and random UUID generation by using `RANDOM_UUID()` function](feature/src/main/resources/db/migration/V1__schema.sql#L2)
 * [Nice video on  one-to-* mapping]()
 * [Nice video on  many-to-* mapping](https://www.youtube.com/watch?v=5rqlqon8xko)
 * [Helpful link 1 (Entity)](https://github.com/daggerok/spring-data-jdbc-examples/blob/dcd2fde95222f97a6accbd8db929677c05496688/many-to-many/src/main/java/com/example/springdatajdbconetomany/SpringDataJdbcManyToManyApplication.java)

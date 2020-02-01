@@ -40,11 +40,11 @@ before_install:
 jobs:
   include:
     - stage: test
-      name: test
+      name: test feature
       jdk: openjdk11
       before_script:
-        - cd $TRAVIS_BUILD_DIR && ./mvnw
-        - bash $TRAVIS_BUILD_DIR/target/*.jar &
+        - cd $TRAVIS_BUILD_DIR && ./mvnw -f feature
+        - bash $TRAVIS_BUILD_DIR/feature/target/*.jar &
         - wait_for 8080
       script:
         - http :8080
