@@ -8,10 +8,12 @@ import lombok.With;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 @With
 @Value
@@ -30,11 +32,10 @@ public class Election {
     }
 
     public Election registerCandidates(Candidate... candidates) {
-        Objects.requireNonNull(candidates);
-        for (Candidate c : candidates) {
-            CandidateRef ref = CandidateRef.of(c.getId());
-            this.candidates.add(ref);
-        }
+        this.candidates.addAll(Arrays.stream(Objects.requireNonNull(candidates))
+                                     .map(Candidate::getId)
+                                     .map(CandidateRef::of)
+                                     .collect(Collectors.toList()));
         return this;
     }
 }
