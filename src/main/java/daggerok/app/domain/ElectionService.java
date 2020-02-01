@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
  * It should not be specific to the your Infrastructure / Framework
  * as well as to your Domain.
  *
- * Here we exposing Election, Candidate and Voter, but in fact it
- * should be using separate DTO in real system.
+ * Here we exposing Election, Candidate and Voter, but in fact in
+ * real system it should be using separate DTO instead...
  */
 @Log4j2
 @Service
