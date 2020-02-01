@@ -3,7 +3,7 @@ Hexagonal DDD application architecture
 
 ```
     +----------+
-    | Election |                Hexagonal architecture
+    | Election |                  Hexagonal architecture
     +----------+
        | 1             +------------------------------------------+
        |               | Infrastructure (framework related) layer |
