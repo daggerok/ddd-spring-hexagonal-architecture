@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="App" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
-    <module name="ddd-spring-hexagonal-architecture" />
+  <configuration default="false" name="LayerApp" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="layer" />
     <extension name="coverage">
       <pattern>
         <option name="PATTERN" value="daggerok.*" />

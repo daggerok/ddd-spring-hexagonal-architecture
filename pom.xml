@@ -19,6 +19,7 @@
 
     <modules>
         <module>feature</module>
+        <module>layer</module>
     </modules>
 
     <developers>

@@ -3,7 +3,7 @@ Hexagonal DDD application architecture
 
 ```
     +----------+
-    | Election |
+    | Election |                Hexagonal architecture
     +----------+
        | 1             +------------------------------------------+
        |               | Infrastructure (framework related) layer |
@@ -31,7 +31,7 @@ Hexagonal DDD application architecture
 ## resources
 
 * [H2 with PostgreSQL mode and random UUID generation by using `RANDOM_UUID()` function](feature/src/main/resources/db/migration/V1__schema.sql#L2)
-* [Nice video on  one-to-* mapping]()
-* [Nice video on  many-to-* mapping](https://www.youtube.com/watch?v=5rqlqon8xko)
 * [Helpful link 1 (Entity)](https://github.com/daggerok/spring-data-jdbc-examples/blob/dcd2fde95222f97a6accbd8db929677c05496688/many-to-many/src/main/java/com/example/springdatajdbconetomany/SpringDataJdbcManyToManyApplication.java)
 * [Helpful link 2 (SQL)](https://github.com/daggerok/spring-data-jdbc-examples/blob/dcd2fde95222f97a6accbd8db929677c05496688/many-to-many/src/main/resources/db/migration/ddl.sql)
+* [Nice video on  many-to-* mapping](https://www.youtube.com/watch?v=5rqlqon8xko)
+* [Nice video on  one-to-* mapping](https://www.youtube.com/watch?v=ccxBXDAPdmo)
