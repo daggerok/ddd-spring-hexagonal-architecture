@@ -58,6 +58,8 @@ jobs:
         - http put :8080/elections/$electionId/candidates/$firstCandidate/voters/$firstVoter
         - http put :8080/elections/$electionId/candidates/$secondCandidate/voters/$secondVoter
         - http put :8080/elections/$electionId/candidates/$firstCandidate/voters/$thirdVoter
+        #
+        - http get :8080/elections/$electionId
       after_script:
         - stop_any 80
     - stage: test
@@ -88,6 +90,8 @@ jobs:
         - http put :8080/elections/$electionId/candidates/$firstCandidate/voters/$firstVoter
         - http put :8080/elections/$electionId/candidates/$secondCandidate/voters/$secondVoter
         - http put :8080/elections/$electionId/candidates/$secondCandidate/voters/$thirdVoter
+        #
+        - http :8080/elections/$electionId
       after_script:
         - stop_any 80
     - stage: test
