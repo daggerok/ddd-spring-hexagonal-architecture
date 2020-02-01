@@ -19,7 +19,8 @@ import java.util.stream.Collectors;
  * as well as to your Domain.
  *
  * Here we exposing Election, Candidate and Voter domains, but in
- * real system, instead we should be using separate DTO classes...
+ * real system, instead we should be using separate DTO classes to
+ * not expose our Domain...
  */
 @Log4j2
 @Service
